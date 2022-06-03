@@ -7,7 +7,6 @@
  *
  * Description:A program that prints the last digit
  *
-
  *Return: Always 0 (Success)
  */
 
