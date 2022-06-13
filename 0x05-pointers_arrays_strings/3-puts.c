@@ -1,13 +1,11 @@
 #include "main.h"
-
 /**
- * print_line - prints a s bytes of a buffer
- * @c: buffer to print
- * @s: bytes of buffer to print
- * @l: line of buffer to print
+ *_puts - prints a string
+ *@str: string
  *
- * Return: void
+ *Return : nothing
  */
+
 void _puts(char *str)
 {
 int i = 0;
