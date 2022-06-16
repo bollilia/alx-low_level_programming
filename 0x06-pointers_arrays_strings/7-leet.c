@@ -1,22 +1,29 @@
 #include "main.h"
 
 /**
- * leet - encodes a string into leetspeek.
- * @s: pointer to input string.
- * Return: Returns pointer to leetspeek string.
+ *leet - encode strings
+ *@a: array
+ *
+ *Return: a
  */
+
 char *leet(char *a)
 {
-	int i, j;
-	char subs[] = "aAeEoOtTlL";
-	char le[] = "43071";
+char s[] = "aAeEoOtTlL";
+char p[] = "4433007711";
 
-	i = 0;
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		for (j = 0; subs[j] != '\0'; j++)
-			if (s[i] == subs[j])
-				s[i] = le[j / 2];
-	}
-	return (a);
+int i = 0;
+int j = 0;
+
+while (a[i] != '\0')
+{
+for (j = 0; s[j] != '\0' && a[i] != s[j]; j++)
+;
+if (j < 10)
+{
+a[i] = p[j];
+}
+i++;
+}
+return (a);
 }
