@@ -6,39 +6,24 @@
  *
  * Return: Capitalized array
  */
-char *cap_string(char *ptr)
+char *cap_string(char *s)
 {
-	int i, j;
-	char abc;
-	int len = 0;
-	char sep[13] = " \t\n,;.!?\"(){}";
+int i = 0;
+int j;
+char spc[] = {' ', '\t', '\n', ',', ';', '.', '!', '"', '(', ')', '{', '}'};
 
-	while (ptr[len] != '\0')
-	{
-		len++;
-	}
-
-	for (i = 0; i < len; i++)
-	{
-		for (j = 0; j < 13; j++)
-		{
-			if (ptr[i] == sep[j])
-			{
-				i++;
-				abc = 'a';
-				while (abc <= 'z')
-				{
-					if (ptr[i] == abc)
-					{
-						ptr[i] = ptr[i] - 32;
-						break;
-					}
-				abc++;
-				}
-				i--;
-			}
-		}
-	}
-
-	return (ptr);
+if (s[0] >= 'a' && s[0] <= 'z')
+{
+s[0] -= 32;
+}
+while (s[i] != '\0')
+{
+for (j = 0; spc[j] != '\0'; j++)
+{
+if (s[i - 1] == spc[j] && s[i] <= 122 && s[i] >= 97)
+s[i] = s[i] - 32;
+}
+i++;
+}
+return (s);
 }
