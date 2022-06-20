@@ -5,35 +5,36 @@
  * @haystack: string.
  * @needle: characters to match.
  *
- * Return: a pointer to the beginning of the located substring,
- * or NULL if the character is not found.
+ * Return: the pointer to the first occurence
  */
 char *_strstr(char *haystack, char *needle)
 {
-	int i, j, count, n_len;
-	char *ret = '\0';
 
-	count = n_len = 0;
+	int i = 0;
+	int j = 0;
+	int k, s;
 
-	while (needle[n_len] != '\0')
-		n_len++;
-
-	for (i = 0; haystack[i] != '\0'; i++)
+	for (s = 0; needle[s]; s++)
+	;
+	if (s == 0)
+	return (haystack);
+	while (haystack[i])
 	{
-		if (haystack[i] == needle[0])
+		if (haystack[i] == needle[j])
 		{
-			for (j = 0; needle[j] != '\0'; j++)
+			i++;
+			j++;
+			for (k = i; haystack[k]; k++)
 			{
-				if (haystack[i + j] == needle[j])
-					count++;
-			}
-
-			if (count == n_len)
-			{
-				ret = &haystack[i];
-				break;
+				if (needle[j] == '\0')
+					return (&(haystack[i - 1]));
+				if (haystack[k] != needle[j])
+					break;
+				j++;
 			}
 		}
+		i++;
+		j = 0;
 	}
-	return (ret);
+	return (NULL);
 }
