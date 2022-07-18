@@ -8,25 +8,84 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	listint_t *lion, *zebra;
+	listint_t *tortoise, *hare;
 
-	lion = zebra = head;
-	while (lion && zebra && zebra->next)
+	tortoise = hare = head;
+	while (tortoise && hare && hare->next)
 	{
-		lion = lion->next;
-		zebra = zebra->next->next;
-		if (lion == zebra)
+		tortoise = tortoise->next;
+		hare = hare->next->next;
+		if (tortoise == hare)
 		{
-			lion = head;
+			tortoise = head;
 			break;
 		}
 	}
-	if(lion || !zebra || !zebra->next)
+	if (!tortoise || !hare || !hare->next)
 		return (NULL);
-	while (lion != zebra)
+	while (tortoise != hare)
 	{
-		lion = lion->next;
-		zebra = zebra->next;
+		tortoise = tortoise->next;
+		hare = hare->next;
 	}
-	return (zebra);
+	return (hare);
 }
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+-- INSERT --                                                                            1,1           All
+:wq
+
