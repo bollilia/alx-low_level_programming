@@ -1,45 +1,48 @@
 #include "main.h"
 
 /**
-  * binary_to_uint - Converts a binary number to an unsigned int
-  * @b: The binary string to converts
-  *
-  * Return: The positive number converted from a binary
-  */
-unsigned int binary_to_uint(const char *b)
+ * _pow - calculates (base ^ power)
+ * @base: base of the exponent
+ * @power: power of the exponent
+ *
+ * Return: value of (base ^ power)
+ */
+unsigned long int _pow(unsigned int base, unsigned int power)
 {
-	unsigned int len = 0, count = 0, sum = 0;
+	unsigned long int num;
+	unsigned int i;
 
-	if (b == NULL)
-		return (0);
-
-	len = _strlen(b);
-	while (len--)
-	{
-		if (b[len] != 48 && b[len] != 49)
-			return (0);
-
-		if (b[len] == 49)
-			sum += 1 << count;
-
-		count++;
-	}
-
-	return (sum);
+	num = 1;
+	for (i = 1; i <= power; i++)
+		num *= base;
+	return (num);
 }
 
 /**
-  * _strlen - Returns the length of a string
-  * @s: String to count
-  *
-  * Return: String length
-  */
-int _strlen(const char *s)
+ * print_binary - prints a number in binary notation
+ * @n: number to print
+ *
+ * Return: void
+ */
+void print_binary(unsigned long int n)
 {
-	int c = 0;
+	unsigned long int divisor, check;
+	char flag;
 
-	while (s[c])
-		c++;
-
-	return (c);
+	flag = 0;
+	divisor = _pow(2, sizeof(unsigned long int) * 8 - 1);
+	while (divisor != 0)
+	{
+		check = n & divisor;
+		if (check == divisor)
+		{
+			flag = 1;
+			_putchar('1');
+		}
+		else if (flag == 1 || divisor == 1)
+		{
+			_putchar('0');
+		}
+		divisor >>= 1;
+	}
 }
